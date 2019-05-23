@@ -1,0 +1,15 @@
+h1, h3 , a{
+  text-align: center;
+  color: tomato;
+  font-style: oblique;
+  text-shadow: 1px 1px 1px black;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+img{
+  border-radius: 30px;
+  box-shadow: 2px 2px 8px black;
+}

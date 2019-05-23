@@ -1,0 +1,27 @@
+<section>
+  <h1>Authentification :</h1>
+  <div *ngIf="!isAuth">
+    <form [formGroup]="connexionForm" (ngSubmit)="onSubmit()">
+      <label for="email">Adresse mail :</label>
+      <input type="text" id="email" formControlName="email" placeholder="@">
+      <br>
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" formControlName="password" placeholder="***********">
+      <button [ngClass]="{'btnActive' : connexionForm.valid}" type="submit" [disabled]="connexionForm.invalid">Se
+        connecter</button>
+    </form>
+    <p>{{ errorMessage }}</p>
+
+    <hr>
+
+    <p>Pas encore de compte? &nbsp; <a href routerLink="/signeUp">Créez-en un!</a></p>
+    <p>Mot de passe oublié ? &nbsp; <a href routerLink="/forgottenPwd">Réinitialiser le!</a></p>
+  </div>
+
+  <div *ngIf="isAuth">
+    <p>Vous êtes déjà connecté !</p>
+    <button type="button" [ngClass]="{'btnActive' : true}" (click)="onSignOut()">Se déconnecter</button>
+    <hr>
+    <a href routerLink="/intranet">Revenir sur le site</a>
+  </div>
+</section>

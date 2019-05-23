@@ -1,0 +1,47 @@
+<h2>Tableau des contrats de travail :</h2>
+<section>
+  <button (click)="ngOnInit()">Annuler</button>
+  <button (click)="onSave()">Enregistrer</button>
+</section>
+<table>
+  <thead>
+    <tr>
+      <th>Id contrat</th>
+      <th>Id Employé</th>
+      <th>Intitulé du contrat</th>
+      <th>Nom employé</th>
+      <th>Prénom Employé</th>
+      <th>Type du contrat</th>
+      <th>Date de début</th>
+      <th>Date de fin</th>
+      <th>Nb heures/sem</th>
+      <th>Echelon employé</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let contrat of contrats">
+    <tr (click)="onModifier(contrat.idContrat)" class="info">
+      <td>{{contrat.idContrat}}</td>
+      <td>{{contrat.idPersonnel}}</td>
+      <td>{{contrat.intitule}}</td>
+      <td>{{contrat.nomP}}</td>
+      <td>{{contrat.prenomP}}</td>
+      <td>{{contrat.typeContrat}}</td>
+      <td>{{contrat.dateDeb}}</td>
+      <td>{{contrat.dateFin}}</td>
+      <td>{{contrat.nbHeureSem}}</td>
+      <td>{{contrat.echelon}}</td>
+    </tr>
+    <tr [@animInput]="!isOpen ? 'close' : idModif === contrat.idPersonnel ? 'open': 'close'">
+      <td></td>
+      <td><input type="text" [(ngModel)]="contrat.idPersonnel"></td>
+      <td><input type="text" [(ngModel)]="contrat.intitule"></td>
+      <td><input type="text" [(ngModel)]="contrat.nomP"></td>
+      <td><input type="text" [(ngModel)]="contrat.prenomP"></td>
+      <td><input type="text" [(ngModel)]="contrat.typeContrat"></td>
+      <td><input type="text" [(ngModel)]="contrat.dateDeb"></td>
+      <td><input type="text" [(ngModel)]="contrat.dateFin"></td>
+      <td><input type="text" [(ngModel)]="contrat.nbHeureSem"></td>
+      <td><input type="text" [(ngModel)]="contrat.echelon"></td>
+    </tr>
+  </tbody>
+</table>
